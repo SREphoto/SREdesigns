@@ -170,24 +170,56 @@ const getProjectAssets = (title) => {
   let icon = Code;
   let img = null;
 
-  // 1. Check for Specific Images (Exact Mathches or Strong Keywords)
-  if (t.includes('zelda') || t.includes('legend of antigravity')) img = "/projects/zelda_clone.png";
-  else if (t.includes('diablo')) img = "/projects/diablo_js.png";
-  else if (t.includes('outrun') || t.includes('prompter') || t.includes('topgun')) img = "/projects/outrun_game.png"; // TopGun uses outrun image
-  else if (t.includes('sky') || t.includes('metropolis') || t.includes('aquaria')) img = "/projects/sky_metropolis.png";
-  else if (t.includes('fractal')) img = "/projects/fractalization.png";
-  else if (t.includes('supertux')) img = "/projects/supertuxkart.png";
-  else if (t.includes('local') || t.includes('treasure')) img = "/projects/localtreasures.png";
-  else if (t.includes('reia') || t.includes('mmo')) img = "/projects/reia.png";
-  else if (t.includes('wellnest')) img = "/projects/wellnest.png";
-  else if (t.includes('word') || t.includes('slide')) img = "/projects/wordslide.png";
-  else if (t.includes('story')) img = "/projects/storyweaver.png";
-  else if (t.includes('asset') || t.includes('studio')) img = "/projects/asset_studio.png";
-  else if (t.includes('home') || t.includes('plan')) img = "/projects/homeplanner.png";
-  else if (t.includes('sprite') || t.includes('forge') || t.includes('gba')) img = "/projects/spriteforge.png";
+  // --- IMAGE MAPPING STRATEGY ---
+  // We have 14 HQ assets. We map them broadly to cover as many of the 88 repos as possible.
+
+  // 1. ZELDA / ADVENTURE (Green/Fantasy)
+  if (t.includes('zelda') || t.includes('adventure') || t.includes('legend') || t.includes('quest') || t.includes('flirt')) img = "/projects/zelda_clone.png";
+
+  // 2. DIABLO / DARK RPG (Dark/Red)
+  else if (t.includes('diablo') || t.includes('rogue') || t.includes('strike') || t.includes('battle') || t.includes('roguish')) img = "/projects/diablo_js.png";
+
+  // 3. OUTRUN / NEON / CYBERPUNK (Purple/Retro)
+  else if (t.includes('outrun') || t.includes('topgun') || t.includes('prompter') || t.includes('neon') || t.includes('cyber') || t.includes('synth') || t.includes('retro') || t.includes('run')) img = "/projects/outrun_game.png";
+
+  // 4. METROPOLIS / CITY / BLUE (Clean/Tech)
+  else if (t.includes('sky') || t.includes('metro') || t.includes('city') || t.includes('aquaria') || t.includes('launch') || t.includes('deploy') || t.includes('connect')) img = "/projects/sky_metropolis.png";
+
+  // 5. FRACTAL / MATH / MUSIC (Abstract/Colorful)
+  else if (t.includes('fractal') || t.includes('music') || t.includes('video') || t.includes('lyric') || t.includes('kinetic') || t.includes('shape') || t.includes('dream') || t.includes('aura')) img = "/projects/fractalization.png";
+
+  // 6. SUPERTUX / RACING (3D/Action)
+  else if (t.includes('super') || t.includes('tux') || t.includes('kart') || t.includes('race') || t.includes('car') || t.includes('gas') || t.includes('gauge')) img = "/projects/supertuxkart.png";
+
+  // 7. TREASURE / MAPS (Map/Location)
+  else if (t.includes('local') || t.includes('treasure') || t.includes('map') || t.includes('tribes') || t.includes('tribe')) img = "/projects/localtreasures.png";
+
+  // 8. REIA / MMO (Fantasy/Multiplayer)
+  else if (t.includes('reia') || t.includes('mmo') || t.includes('multi') || t.includes('texas') || t.includes('poker')) img = "/projects/reia.png";
+
+  // 9. WELLNEST / HEALTH (Calm/Blue)
+  else if (t.includes('well') || t.includes('health') || t.includes('life') || t.includes('care') || t.includes('exam') || t.includes('doc') || t.includes('intelli')) img = "/projects/wellnest.png";
+
+  // 10. WORDSLIDE / PUZZLE (Clean/Game)
+  else if (t.includes('word') || t.includes('slide') || t.includes('puzzle') || t.includes('game') || t.includes('tetris')) img = "/projects/wordslide.png";
+
+  // 11. STORYWEAVER / TEXT (Book/Creative)
+  else if (t.includes('story') || t.includes('write') || t.includes('punchline') || t.includes('meme') || t.includes('calendar')) img = "/projects/storyweaver.png";
+
+  // 12. ASSET STUDIO / TOOLS (Dark/Editor)
+  else if (t.includes('asset') || t.includes('studio') || t.includes('generator') || t.includes('forge') || t.includes('fashion') || t.includes('design') || t.includes('photo') || t.includes('image')) img = "/projects/asset_studio.png";
+
+  // 13. HOME PLANNER / ARCH (Blueprint/Tech)
+  else if (t.includes('home') || t.includes('plan') || t.includes('arch') || t.includes('grid') || t.includes('spec')) img = "/projects/homeplanner.png";
+
+  // 14. SPRITEFORGE / PIXEL (Pixel Art)
+  else if (t.includes('sprite') || t.includes('pixel') || t.includes('gba') || t.includes('boy') || t.includes('iodine')) img = "/projects/spriteforge.png";
+
+  // Fallback Abstract for anything else
+  else img = "/projects/fractalization.png";
 
 
-  // 2. Assign Icon (Always have an icon ready even if image exists, though mostly for fallback cards)
+  // --- ICON STRATEGY ---
   if (t.includes('game') || t.includes('kart') || t.includes('rpg') || t.includes('zelda')) icon = Gamepad2;
   else if (t.includes('ai') || t.includes('gpt') || t.includes('brain')) icon = Brain;
   else if (t.includes('tool') || t.includes('generator')) icon = Wrench;
