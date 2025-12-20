@@ -87,21 +87,24 @@ const Hero = () => {
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, desc }) => (
+const ServiceCard = ({ icon: LucideIcon, title, desc }) => (
   <motion.div
     whileHover={{ y: -10 }}
     className="glass-card p-8"
   >
     <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 text-primary">
-      <Icon size={28} />
+      <LucideIcon size={28} />
     </div>
     <h3 className="text-2xl mb-4">{title}</h3>
     <p className="text-muted leading-relaxed">{desc}</p>
   </motion.div>
 );
 
-const ProjectCard = ({ title, cat, img }) => (
+const ProjectCard = ({ title, cat, img, link = "#" }) => (
   <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
     whileHover={{ y: -5 }}
     className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-900 border border-glass-border"
   >
@@ -111,7 +114,12 @@ const ProjectCard = ({ title, cat, img }) => (
     <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
       <span className="text-primary text-sm font-bold tracking-widest uppercase mb-2 block">{cat}</span>
       <h3 className="text-3xl font-bold mb-4">{title}</h3>
-      <a href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors"
+      >
         View Project <ExternalLink size={16} />
       </a>
     </div>
@@ -128,37 +136,36 @@ const App = () => {
         <div className="container">
           <div className="text-center mb-20">
             <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">What I Do</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Design & Engineering</h2>
+            <h2 className="text-5xl md:text-6xl font-bold">Specialized <span className="text-gradient">Solutions</span></h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               icon={Code}
-              title="Development"
-              desc="Clean, efficient, and scalable code built with modern frameworks like React and Next.js."
+              title="Full-Stack Dev"
+              desc="Building scalable, high-performance web applications with modern architectures and clean code."
             />
             <ServiceCard
-              icon={Layers}
+              icon={Palette}
               title="UI/UX Design"
-              desc="Intuitive interfaces designed with a focus on user experience and premium aesthetics."
+              desc="Crafting immersive, high-end digital experiences that prioritize visual excellence and user engagement."
             />
             <ServiceCard
               icon={Zap}
-              title="Performance"
-              desc="Optimized for speed and SEO to ensure your digital presence is fast and discoverable."
+              title="Cloud Launch"
+              desc="Seamless deployment strategies for the Antigravity ecosystem, ensuring 99.9% uptime and global reach."
             />
           </div>
         </div>
       </section>
 
-      <section id="work" className="py-32 bg-black/20">
+      <section id="work" className="py-32 bg-gray-950/50">
         <div className="container">
-          <div className="flex justify-between items-end mb-20">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div>
-              <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Portfolio</span>
-              <h2 className="text-4xl md:text-5xl font-bold">Selected Works</h2>
+              <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Selected Works</span>
+              <h2 className="text-5xl md:text-6xl font-bold">The <span className="text-gradient">Showcase</span></h2>
             </div>
-            <a href="#" className="hidden md:block text-muted hover:text-white transition-colors">View All Projects &rarr;</a>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -167,51 +174,61 @@ const App = () => {
               title="Diablo JS"
               cat="RPG Engine"
               img="/projects/diablo_js.png"
+              link="https://github.com/SREphoto/diablo-js"
             />
             <ProjectCard
               title="Outrun Retro"
               cat="Cyberpunk Racing"
               img="/projects/outrun_game.png"
+              link="https://srephoto.github.io/TopGunPrompter/"
             />
             <ProjectCard
               title="Sky Metropolis"
               cat="World Building"
               img="/projects/sky_metropolis.png"
+              link="https://github.com/SREphoto/antigravity-workspace-template"
             />
             <ProjectCard
               title="Fractalization"
               cat="Mathematical Art"
               img="/projects/fractalization.png"
+              link="https://github.com/SREphoto/Fractalization"
             />
             <ProjectCard
               title="SuperTuxKart"
               cat="3D Racing"
               img="/projects/supertuxkart.png"
+              link="https://github.com/SREphoto/SuperTuxKart"
             />
             <ProjectCard
               title="LocalTreasures"
               cat="Interactive Maps"
               img="/projects/localtreasures.png"
+              link="https://github.com/SREphoto/Local-Treasure-Map"
             />
             <ProjectCard
               title="Reia"
               cat="Multiplayer RPG"
               img="/projects/reia.png"
+              link="https://github.com/SREphoto/Reia"
             />
             <ProjectCard
               title="WellNest"
               cat="Mental Health & Tech"
               img="/projects/wellnest.png"
+              link="https://github.com/SREphoto/WellNest"
             />
             <ProjectCard
               title="WordSlide"
               cat="Gaming & Puzzles"
               img="/projects/wordslide.png"
+              link="https://github.com/SREphoto/Word-Music-Game"
             />
             <ProjectCard
               title="Storyweaver AI"
               cat="Interactive Narrative"
               img="/projects/storyweaver.png"
+              link="https://github.com/SREphoto/Ai-Studio-Launch-Assistant"
             />
 
             {/* --- DEVELOPMENT APPS --- */}
@@ -219,71 +236,85 @@ const App = () => {
               title="3D Asset Studio"
               cat="AI & Design"
               img="/projects/asset_studio.png"
+              link="#"
             />
             <ProjectCard
               title="Legend of Antigravity"
               cat="Game Development"
               img="/projects/zelda_clone.png"
+              link="https://github.com/SREphoto/zelda-clone"
             />
             <ProjectCard
               title="HomePlanner Pro"
               cat="Smart Architecture"
               img="/projects/homeplanner.png"
+              link="#"
             />
             <ProjectCard
               title="SpriteForge AI"
               cat="Game Assets"
               img="/projects/spriteforge.png"
+              link="https://github.com/SREphoto/SpriteForge"
             />
             <ProjectCard
               title="Mad Men Prompter"
               cat="AI Content Creation"
               img="/projects/diablo_js.png"
+              link="https://srephoto.github.io/TopGunPrompter/"
             />
             <ProjectCard
               title="Aquaria"
               cat="Virtual Simulation"
               img="/projects/sky_metropolis.png"
+              link="https://github.com/SREphoto/Aquaria"
             />
             <ProjectCard
               title="Pixel Platformer"
               cat="Retro Engine"
               img="/projects/zelda_clone.png"
+              link="https://github.com/SREphoto/PixelPlatformer"
             />
             <ProjectCard
               title="Texas Hold'em"
               cat="Gaming"
               img="/projects/outrun_game.png"
+              link="https://github.com/SREphoto/TEXASHOLD"
             />
             <ProjectCard
               title="Fantasy Map Designer"
               cat="Design Tool"
               img="/projects/localtreasures.png"
+              link="#"
             />
             <ProjectCard
               title="IodineGBA"
               cat="Emulation"
               img="/projects/spriteforge.png"
+              link="https://github.com/SREphoto/IodineGBA"
             />
             <ProjectCard
               title="Punchline Master"
               cat="Writing Assistant"
               img="/projects/storyweaver.png"
+              link="#"
             />
             <ProjectCard
               title="Rogue-ish"
               cat="Dungeon Crawler"
               img="/projects/reia.png"
+              link="https://github.com/SREphoto/roguish"
             />
             <ProjectCard
               title="Music Video Creator"
               cat="Media Tool"
               img="/projects/fractalization.png"
+              link="https://github.com/SREphoto/LyricVideoAssetCreator"
             />
             <ProjectCard
               title="OCR App"
               cat="Productivity"
               img="/projects/wellnest.png"
+              link="#"
             />
           </div>
         </div>
