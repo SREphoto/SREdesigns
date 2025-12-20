@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Code, Layers, Zap, ChevronDown } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Mail, ExternalLink, Code, Layers, Zap, ChevronDown, Palette, Globe, Cpu, Twitter } from 'lucide-react';
 import './App.css';
 
 const Navbar = () => {
@@ -31,50 +31,39 @@ const Navbar = () => {
 };
 
 const Hero = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 200]);
-
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-secondary/20 rounded-full blur-[120px]" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(52,211,153,0.1),transparent_50%)]" />
+
+      <div className="container relative z-10">
+        <div className="max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm mb-6 block">Premium Portfolio</span>
+            <h1 className="text-7xl md:text-9xl font-bold font-heading mb-8 leading-[0.9] tracking-tighter">
+              Crafting <br />
+              <span className="text-gradient">Digital</span> <br />
+              Interfaces.
+            </h1>
+            <p className="text-xl md:text-2xl text-muted max-w-2xl mb-12 leading-relaxed">
+              Full-stack architect specializing in the Antigravity ecosystem.
+              Merging high-end aesthetics with technical precision.
+            </p>
+
+            <div className="flex flex-wrap gap-6">
+              <a href="#work" className="btn btn-primary px-8 py-4">Explore Work</a>
+              <div className="flex items-center gap-6 px-4">
+                <a href="https://github.com/SREphoto" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Github size={24} /></a>
+                <a href="#" className="hover:text-primary transition-colors"><Linkedin size={24} /></a>
+                <a href="#" className="hover:text-primary transition-colors"><Mail size={24} /></a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
-
-      <motion.div
-        style={{ y }}
-        className="container relative z-10 text-center"
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
-        >
-          Crafting <span className="gradient-text">Digital</span><br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Experiences</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-10"
-        >
-          Where technical reliability meets premium aesthetics.
-          Building the future of the web, one pixel at a time.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex gap-4 justify-center"
-        >
-          <a href="#work" className="btn btn-primary">View Work</a>
-          <a href="#contact" className="px-8 py-3 rounded-full border border-glass-border hover:bg-white/5 transition-all font-heading font-bold uppercase tracking-wider text-sm">Contact Me</a>
-        </motion.div>
-      </motion.div>
 
       <motion.div
         animate={{ y: [0, 10, 0] }}
@@ -87,13 +76,13 @@ const Hero = () => {
   );
 };
 
-const ServiceCard = ({ icon: LucideIcon, title, desc }) => (
+const ServiceCard = ({ icon: IconComponent, title, desc }) => (
   <motion.div
     whileHover={{ y: -10 }}
     className="glass-card p-8"
   >
     <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 text-primary">
-      <LucideIcon size={28} />
+      <IconComponent size={28} />
     </div>
     <h3 className="text-2xl mb-4">{title}</h3>
     <p className="text-muted leading-relaxed">{desc}</p>
@@ -141,17 +130,17 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
-              icon={Code}
+              iconComponent={Code}
               title="Full-Stack Dev"
               desc="Building scalable, high-performance web applications with modern architectures and clean code."
             />
             <ServiceCard
-              icon={Palette}
+              iconComponent={Palette}
               title="UI/UX Design"
               desc="Crafting immersive, high-end digital experiences that prioritize visual excellence and user engagement."
             />
             <ServiceCard
-              icon={Zap}
+              iconComponent={Zap}
               title="Cloud Launch"
               desc="Seamless deployment strategies for the Antigravity ecosystem, ensuring 99.9% uptime and global reach."
             />
@@ -177,7 +166,7 @@ const App = () => {
               link="https://github.com/SREphoto/diablo-js"
             />
             <ProjectCard
-              title="Outrun Retro"
+              title="TopGun Prompter"
               cat="Cyberpunk Racing"
               img="/projects/outrun_game.png"
               link="https://srephoto.github.io/TopGunPrompter/"
@@ -225,18 +214,18 @@ const App = () => {
               link="https://github.com/SREphoto/Word-Music-Game"
             />
             <ProjectCard
-              title="Storyweaver AI"
-              cat="Interactive Narrative"
-              img="/projects/storyweaver.png"
-              link="https://github.com/SREphoto/Ai-Studio-Launch-Assistant"
+              title="SpriteForge AI"
+              cat="Game Assets"
+              img="/projects/spriteforge.png"
+              link="https://github.com/SREphoto/SpriteForge"
             />
 
             {/* --- DEVELOPMENT APPS --- */}
             <ProjectCard
-              title="3D Asset Studio"
-              cat="AI & Design"
-              img="/projects/asset_studio.png"
-              link="#"
+              title="Pixel Platformer"
+              cat="Retro Engine"
+              img="/projects/zelda_clone.png"
+              link="https://github.com/SREphoto/PixelPlatformer"
             />
             <ProjectCard
               title="Legend of Antigravity"
@@ -245,34 +234,10 @@ const App = () => {
               link="https://github.com/SREphoto/zelda-clone"
             />
             <ProjectCard
-              title="HomePlanner Pro"
-              cat="Smart Architecture"
-              img="/projects/homeplanner.png"
-              link="#"
-            />
-            <ProjectCard
-              title="SpriteForge AI"
-              cat="Game Assets"
-              img="/projects/spriteforge.png"
-              link="https://github.com/SREphoto/SpriteForge"
-            />
-            <ProjectCard
-              title="Mad Men Prompter"
-              cat="AI Content Creation"
-              img="/projects/diablo_js.png"
-              link="https://srephoto.github.io/TopGunPrompter/"
-            />
-            <ProjectCard
               title="Aquaria"
               cat="Virtual Simulation"
               img="/projects/sky_metropolis.png"
               link="https://github.com/SREphoto/Aquaria"
-            />
-            <ProjectCard
-              title="Pixel Platformer"
-              cat="Retro Engine"
-              img="/projects/zelda_clone.png"
-              link="https://github.com/SREphoto/PixelPlatformer"
             />
             <ProjectCard
               title="Texas Hold'em"
@@ -281,22 +246,10 @@ const App = () => {
               link="https://github.com/SREphoto/TEXASHOLD"
             />
             <ProjectCard
-              title="Fantasy Map Designer"
-              cat="Design Tool"
-              img="/projects/localtreasures.png"
-              link="#"
-            />
-            <ProjectCard
               title="IodineGBA"
               cat="Emulation"
               img="/projects/spriteforge.png"
               link="https://github.com/SREphoto/IodineGBA"
-            />
-            <ProjectCard
-              title="Punchline Master"
-              cat="Writing Assistant"
-              img="/projects/storyweaver.png"
-              link="#"
             />
             <ProjectCard
               title="Rogue-ish"
@@ -305,16 +258,40 @@ const App = () => {
               link="https://github.com/SREphoto/roguish"
             />
             <ProjectCard
+              title="PixelArtPro"
+              cat="Design Tool"
+              img="/projects/asset_studio.png"
+              link="https://github.com/SREphoto/PixelArtPro"
+            />
+            <ProjectCard
               title="Music Video Creator"
               cat="Media Tool"
               img="/projects/fractalization.png"
               link="https://github.com/SREphoto/LyricVideoAssetCreator"
             />
             <ProjectCard
-              title="OCR App"
-              cat="Productivity"
+              title="Flirt Game"
+              cat="Interactive"
+              img="/projects/diablo_js.png"
+              link="https://github.com/SREphoto/Flirt-Game"
+            />
+            <ProjectCard
+              title="Probability Suite"
+              cat="Mathematics"
               img="/projects/wellnest.png"
-              link="#"
+              link="https://github.com/SREphoto/dynamic-probability-calculator"
+            />
+            <ProjectCard
+              title="Deployment Launchpad"
+              cat="DevOps"
+              img="/projects/homeplanner.png"
+              link="https://github.com/SREphoto/Interactive-App-Deployment-Launchpad-"
+            />
+            <ProjectCard
+              title="Storyweaver AI"
+              cat="Interactive Narrative"
+              img="/projects/storyweaver.png"
+              link="https://github.com/SREphoto/Ai-Studio-Launch-Assistant"
             />
           </div>
         </div>
