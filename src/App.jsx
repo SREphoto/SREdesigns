@@ -162,6 +162,7 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* --- CORE PROJECTS --- */}
             <ProjectCard
               title="Diablo JS"
               cat="RPG Engine"
@@ -212,6 +213,8 @@ const App = () => {
               cat="Interactive Narrative"
               img="/projects/storyweaver.png"
             />
+
+            {/* --- DEVELOPMENT APPS --- */}
             <ProjectCard
               title="3D Asset Studio"
               cat="AI & Design"
@@ -231,6 +234,56 @@ const App = () => {
               title="SpriteForge AI"
               cat="Game Assets"
               img="/projects/spriteforge.png"
+            />
+            <ProjectCard
+              title="Mad Men Prompter"
+              cat="AI Content Creation"
+              img="/projects/diablo_js.png"
+            />
+            <ProjectCard
+              title="Aquaria"
+              cat="Virtual Simulation"
+              img="/projects/sky_metropolis.png"
+            />
+            <ProjectCard
+              title="Pixel Platformer"
+              cat="Retro Engine"
+              img="/projects/zelda_clone.png"
+            />
+            <ProjectCard
+              title="Texas Hold'em"
+              cat="Gaming"
+              img="/projects/outrun_game.png"
+            />
+            <ProjectCard
+              title="Fantasy Map Designer"
+              cat="Design Tool"
+              img="/projects/localtreasures.png"
+            />
+            <ProjectCard
+              title="IodineGBA"
+              cat="Emulation"
+              img="/projects/spriteforge.png"
+            />
+            <ProjectCard
+              title="Punchline Master"
+              cat="Writing Assistant"
+              img="/projects/storyweaver.png"
+            />
+            <ProjectCard
+              title="Rogue-ish"
+              cat="Dungeon Crawler"
+              img="/projects/reia.png"
+            />
+            <ProjectCard
+              title="Music Video Creator"
+              cat="Media Tool"
+              img="/projects/fractalization.png"
+            />
+            <ProjectCard
+              title="OCR App"
+              cat="Productivity"
+              img="/projects/wellnest.png"
             />
           </div>
         </div>
