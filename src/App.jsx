@@ -92,6 +92,9 @@ const ServiceCard = ({ icon: Icon, title, desc }) => (
 import { projects } from './data/repos';
 
 const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
+  // Generate a unique hue rotation based on the title hash
+  const hue = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360;
+
   if (img) {
     return (
       <motion.div
@@ -102,7 +105,12 @@ const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
         className="group relative overflow-hidden rounded-2xl h-[300px] bg-gray-900 border border-glass-border"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity z-10" />
-        <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <img
+          src={img}
+          alt={title}
+          style={{ filter: `hue-rotate(${hue}deg)` }}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+        />
 
         <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
           <a
