@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Code, Layers, Zap, ChevronDown, Palette, Globe, Cpu, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ExternalLink, Code, Zap, ChevronDown, Palette } from 'lucide-react';
 import './App.css';
 
 const Navbar = () => {
@@ -76,13 +76,13 @@ const Hero = () => {
   );
 };
 
-const ServiceCard = ({ icon: IconComponent, title, desc }) => (
+const ServiceCard = ({ icon: Icon, title, desc }) => (
   <motion.div
     whileHover={{ y: -10 }}
     className="glass-card p-8"
   >
     <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 text-primary">
-      <IconComponent size={28} />
+      <Icon size={28} />
     </div>
     <h3 className="text-2xl mb-4">{title}</h3>
     <p className="text-muted leading-relaxed">{desc}</p>
@@ -130,17 +130,17 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
-              iconComponent={Code}
+              icon={Code}
               title="Full-Stack Dev"
               desc="Building scalable, high-performance web applications with modern architectures and clean code."
             />
             <ServiceCard
-              iconComponent={Palette}
+              icon={Palette}
               title="UI/UX Design"
               desc="Crafting immersive, high-end digital experiences that prioritize visual excellence and user engagement."
             />
             <ServiceCard
-              iconComponent={Zap}
+              icon={Zap}
               title="Cloud Launch"
               desc="Seamless deployment strategies for the Antigravity ecosystem, ensuring 99.9% uptime and global reach."
             />
