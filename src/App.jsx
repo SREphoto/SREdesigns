@@ -91,69 +91,113 @@ const ServiceCard = ({ icon: Icon, title, desc }) => (
 
 import { projects } from './data/repos';
 
-const ProjectCard = ({ title, cat, icon: Icon, link = "#" }) => (
-  <div
-    className="group relative flex flex-col justify-between p-8 rounded-2xl bg-gray-900/50 border border-white/5 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 backdrop-blur-sm h-full"
-  >
-    <div>
-      <div className="flex justify-between items-start mb-6">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
-          <Icon size={24} />
+const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
+  if (img) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        whileHover={{ y: -5 }}
+        className="group relative overflow-hidden rounded-2xl h-[300px] bg-gray-900 border border-glass-border"
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity z-10" />
+        <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+
+        <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-black/50 backdrop-blur-md rounded-full text-white hover:text-primary transition-colors block"
+          >
+            <ExternalLink size={20} />
+          </a>
         </div>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-white transition-colors"
-          title="View Code"
-        >
-          <ExternalLink size={20} />
-        </a>
+
+        <div className="absolute bottom-0 left-0 w-full p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-primary text-xs font-bold tracking-widest uppercase">{cat}</span>
+          </div>
+          <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+      className="group relative flex flex-col justify-between p-8 rounded-2xl bg-gray-900/50 border border-white/5 hover:border-primary/50 hover:bg-gray-800/80 transition-all duration-300 backdrop-blur-sm h-[300px]"
+    >
+      <div>
+        <div className="flex justify-between items-start mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+            <Icon size={24} />
+          </div>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted hover:text-white transition-colors"
+            title="View Code"
+          >
+            <ExternalLink size={20} />
+          </a>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
+        <p className="text-sm text-muted leading-relaxed line-clamp-3">{cat}</p>
       </div>
 
-      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-sm text-muted leading-relaxed line-clamp-3">{cat}</p>
-    </div>
+      <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
+        <span className="text-xs font-bold tracking-widest uppercase text-white/40 group-hover:text-primary/60 transition-colors">
+          GitHub Repo
+        </span>
+        <Github size={16} className="text-white/20 group-hover:text-white transition-colors" />
+      </div>
+    </motion.div>
+  );
+};
 
-    <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
-      <span className="text-xs font-bold tracking-widest uppercase text-white/40 group-hover:text-primary/60 transition-colors">
-        GitHub Repo
-      </span>
-      <Github size={16} className="text-white/20 group-hover:text-white transition-colors" />
-    </div>
-  </div>
-);
-
-// Helper to assign icons based on project keywords
-const getProjectIcon = (title) => {
+// Helper to assign icons/images based on project keywords
+const getProjectAssets = (title) => {
   const t = title.toLowerCase();
 
-  // Game Dev / Engines
-  if (t.includes('zelda') || t.includes('adventure') || t.includes('game') || t.includes('rpg') || t.includes('rogue') || t.includes('diablo') || t.includes('race') || t.includes('kart') || t.includes('platformer')) return Gamepad2;
+  let icon = Code;
+  let img = null;
 
-  // AI / ML
-  if (t.includes('gpt') || t.includes('ai') || t.includes('model') || t.includes('dream') || t.includes('brain') || t.includes('neural')) return Brain;
+  // 1. Check for Specific Images (Exact Mathches or Strong Keywords)
+  if (t.includes('zelda') || t.includes('legend of antigravity')) img = "/projects/zelda_clone.png";
+  else if (t.includes('diablo')) img = "/projects/diablo_js.png";
+  else if (t.includes('outrun') || t.includes('prompter') || t.includes('topgun')) img = "/projects/outrun_game.png"; // TopGun uses outrun image
+  else if (t.includes('sky') || t.includes('metropolis') || t.includes('aquaria')) img = "/projects/sky_metropolis.png";
+  else if (t.includes('fractal')) img = "/projects/fractalization.png";
+  else if (t.includes('supertux')) img = "/projects/supertuxkart.png";
+  else if (t.includes('local') || t.includes('treasure')) img = "/projects/localtreasures.png";
+  else if (t.includes('reia') || t.includes('mmo')) img = "/projects/reia.png";
+  else if (t.includes('wellnest')) img = "/projects/wellnest.png";
+  else if (t.includes('word') || t.includes('slide')) img = "/projects/wordslide.png";
+  else if (t.includes('story')) img = "/projects/storyweaver.png";
+  else if (t.includes('asset') || t.includes('studio')) img = "/projects/asset_studio.png";
+  else if (t.includes('home') || t.includes('plan')) img = "/projects/homeplanner.png";
+  else if (t.includes('sprite') || t.includes('forge') || t.includes('gba')) img = "/projects/spriteforge.png";
 
-  // Tools / Utilities
-  if (t.includes('tool') || t.includes('cli') || t.includes('generator') || t.includes('scaffolder') || t.includes('calculate')) return Wrench;
 
-  // Design / Art
-  if (t.includes('sprite') || t.includes('art') || t.includes('design') || t.includes('pixel') || t.includes('palette') || t.includes('icon')) return Palette;
+  // 2. Assign Icon (Always have an icon ready even if image exists, though mostly for fallback cards)
+  if (t.includes('game') || t.includes('kart') || t.includes('rpg') || t.includes('zelda')) icon = Gamepad2;
+  else if (t.includes('ai') || t.includes('gpt') || t.includes('brain')) icon = Brain;
+  else if (t.includes('tool') || t.includes('generator')) icon = Wrench;
+  else if (t.includes('design') || t.includes('art') || t.includes('pixel')) icon = Palette;
+  else if (t.includes('music') || t.includes('audio')) icon = Music;
+  else if (t.includes('web') || t.includes('app') || t.includes('site')) icon = Layout;
+  else if (t.includes('data')) icon = Database;
+  else if (t.includes('dev') || t.includes('code')) icon = Terminal;
 
-  // Media / Audio
-  if (t.includes('music') || t.includes('video') || t.includes('lyric') || t.includes('audio') || t.includes('sound')) return Music;
-
-  // Web / App
-  if (t.includes('web') || t.includes('app') || t.includes('site') || t.includes('portfolio') || t.includes('interface')) return Layout;
-
-  // Data / Docs
-  if (t.includes('data') || t.includes('doc') || t.includes('db') || t.includes('base') || t.includes('store')) return Database;
-
-  // Code / Dev
-  if (t.includes('dev') || t.includes('code') || t.includes('script') || t.includes('template')) return Terminal;
-
-  // Fallback
-  return Code;
+  return { icon, img };
 };
 
 const App = () => {
@@ -200,15 +244,19 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                title={project.title}
-                cat={project.desc || "Software Engineer Project"}
-                icon={getProjectIcon(project.title)}
-                link={project.link}
-              />
-            ))}
+            {projects.map((project, index) => {
+              const { icon, img } = getProjectAssets(project.title);
+              return (
+                <ProjectCard
+                  key={index}
+                  title={project.title}
+                  cat={project.desc || "Software Engineer Project"}
+                  icon={icon}
+                  img={img}
+                  link={project.link}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
