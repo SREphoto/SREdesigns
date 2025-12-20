@@ -115,6 +115,40 @@ const ProjectCard = ({ title, cat, img, link = "#" }) => (
   </motion.div>
 );
 
+import { projects } from './data/repos';
+
+// Helper to assign images based on project keywords
+const getProjectImage = (title) => {
+  const t = title.toLowerCase();
+
+  // Game Dev / Engines
+  if (t.includes('zelda') || t.includes('adventure') || t.includes('game')) return "/projects/zelda_clone.png";
+  if (t.includes('diablo') || t.includes('rpg') || t.includes('rogue')) return "/projects/diablo_js.png";
+  if (t.includes('outrun') || t.includes('race') || t.includes('kart') || t.includes('speed')) return "/projects/outrun_game.png";
+  if (t.includes('mmo') || t.includes('multiplayer') || t.includes('reia')) return "/projects/reia.png";
+  if (t.includes('platformer') || t.includes('pixel')) return "/projects/zelda_clone.png";
+  if (t.includes('gba') || t.includes('emulator')) return "/projects/spriteforge.png";
+  if (t.includes('poker') || t.includes('card') || t.includes('hold')) return "/projects/outrun_game.png"; // temporary poker placeholder
+
+  // Creative / Design Tools
+  if (t.includes('sprite') || t.includes('asset') || t.includes('generate')) return "/projects/spriteforge.png";
+  if (t.includes('music') || t.includes('video') || t.includes('lyric') || t.includes('entertainment')) return "/projects/fractalization.png";
+  if (t.includes('art') || t.includes('design') || t.includes('studio') || t.includes('fractal')) return "/projects/asset_studio.png";
+
+  // World Building / Sims
+  if (t.includes('sky') || t.includes('city') || t.includes('sim') || t.includes('metropolis')) return "/projects/sky_metropolis.png";
+  if (t.includes('map') || t.includes('treasure') || t.includes('place')) return "/projects/localtreasures.png";
+  if (t.includes('aquaria') || t.includes('water')) return "/projects/sky_metropolis.png"; // calm blue aesthetic
+
+  // Apps / Productivity
+  if (t.includes('story') || t.includes('write') || t.includes('prompter') || t.includes('word')) return "/projects/storyweaver.png";
+  if (t.includes('wellnest') || t.includes('health')) return "/projects/wellnest.png";
+  if (t.includes('home') || t.includes('plan')) return "/projects/homeplanner.png";
+
+  // Fallback for others
+  return "/projects/fractalization.png"; // Abstract/Tech feel
+};
+
 const App = () => {
   return (
     <div className="bg-dark min-h-screen text-white selection:bg-primary selection:text-black">
@@ -154,145 +188,20 @@ const App = () => {
             <div>
               <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Selected Works</span>
               <h2 className="text-5xl md:text-6xl font-bold">The <span className="text-gradient">Showcase</span></h2>
+              <p className="text-muted mt-4 text-lg">Exploring {projects.length}+ projects across the Antigravity ecosystem.</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* --- CORE PROJECTS --- */}
-            <ProjectCard
-              title="Diablo JS"
-              cat="RPG Engine"
-              img="/projects/diablo_js.png"
-              link="https://github.com/SREphoto/diablo-js"
-            />
-            <ProjectCard
-              title="TopGun Prompter"
-              cat="Cyberpunk Racing"
-              img="/projects/outrun_game.png"
-              link="https://srephoto.github.io/TopGunPrompter/"
-            />
-            <ProjectCard
-              title="Sky Metropolis"
-              cat="World Building"
-              img="/projects/sky_metropolis.png"
-              link="https://github.com/SREphoto/antigravity-workspace-template"
-            />
-            <ProjectCard
-              title="Fractalization"
-              cat="Mathematical Art"
-              img="/projects/fractalization.png"
-              link="https://github.com/SREphoto/Fractalization"
-            />
-            <ProjectCard
-              title="SuperTuxKart"
-              cat="3D Racing"
-              img="/projects/supertuxkart.png"
-              link="https://github.com/SREphoto/SuperTuxKart"
-            />
-            <ProjectCard
-              title="LocalTreasures"
-              cat="Interactive Maps"
-              img="/projects/localtreasures.png"
-              link="https://github.com/SREphoto/Local-Treasure-Map"
-            />
-            <ProjectCard
-              title="Reia"
-              cat="Multiplayer RPG"
-              img="/projects/reia.png"
-              link="https://github.com/SREphoto/Reia"
-            />
-            <ProjectCard
-              title="WellNest"
-              cat="Mental Health & Tech"
-              img="/projects/wellnest.png"
-              link="https://github.com/SREphoto/WellNest"
-            />
-            <ProjectCard
-              title="WordSlide"
-              cat="Gaming & Puzzles"
-              img="/projects/wordslide.png"
-              link="https://github.com/SREphoto/Word-Music-Game"
-            />
-            <ProjectCard
-              title="SpriteForge AI"
-              cat="Game Assets"
-              img="/projects/spriteforge.png"
-              link="https://github.com/SREphoto/SpriteForge"
-            />
-
-            {/* --- DEVELOPMENT APPS --- */}
-            <ProjectCard
-              title="Pixel Platformer"
-              cat="Retro Engine"
-              img="/projects/zelda_clone.png"
-              link="https://github.com/SREphoto/PixelPlatformer"
-            />
-            <ProjectCard
-              title="Legend of Antigravity"
-              cat="Game Development"
-              img="/projects/zelda_clone.png"
-              link="https://github.com/SREphoto/zelda-clone"
-            />
-            <ProjectCard
-              title="Aquaria"
-              cat="Virtual Simulation"
-              img="/projects/sky_metropolis.png"
-              link="https://github.com/SREphoto/Aquaria"
-            />
-            <ProjectCard
-              title="Texas Hold'em"
-              cat="Gaming"
-              img="/projects/outrun_game.png"
-              link="https://github.com/SREphoto/TEXASHOLD"
-            />
-            <ProjectCard
-              title="IodineGBA"
-              cat="Emulation"
-              img="/projects/spriteforge.png"
-              link="https://github.com/SREphoto/IodineGBA"
-            />
-            <ProjectCard
-              title="Rogue-ish"
-              cat="Dungeon Crawler"
-              img="/projects/reia.png"
-              link="https://github.com/SREphoto/roguish"
-            />
-            <ProjectCard
-              title="PixelArtPro"
-              cat="Design Tool"
-              img="/projects/asset_studio.png"
-              link="https://github.com/SREphoto/PixelArtPro"
-            />
-            <ProjectCard
-              title="Music Video Creator"
-              cat="Media Tool"
-              img="/projects/fractalization.png"
-              link="https://github.com/SREphoto/LyricVideoAssetCreator"
-            />
-            <ProjectCard
-              title="Flirt Game"
-              cat="Interactive"
-              img="/projects/diablo_js.png"
-              link="https://github.com/SREphoto/Flirt-Game"
-            />
-            <ProjectCard
-              title="Probability Suite"
-              cat="Mathematics"
-              img="/projects/wellnest.png"
-              link="https://github.com/SREphoto/dynamic-probability-calculator"
-            />
-            <ProjectCard
-              title="Deployment Launchpad"
-              cat="DevOps"
-              img="/projects/homeplanner.png"
-              link="https://github.com/SREphoto/Interactive-App-Deployment-Launchpad-"
-            />
-            <ProjectCard
-              title="Storyweaver AI"
-              cat="Interactive Narrative"
-              img="/projects/storyweaver.png"
-              link="https://github.com/SREphoto/Ai-Studio-Launch-Assistant"
-            />
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                cat={project.desc || "Software Development"}
+                img={getProjectImage(project.title)}
+                link={project.link}
+              />
+            ))}
           </div>
         </div>
       </section>
