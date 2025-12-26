@@ -86,5 +86,7 @@ export const projects = [
     { title: "IodineGBA", desc: "JavaScript GameBoy Advance emulator.", link: "https://github.com/SREphoto/IodineGBA" },
     { title: "diablo-js", desc: "Isometric minimal-code style game at html5 canvas and javascript", link: "https://github.com/SREphoto/diablo-js" },
     { title: "roguish", desc: "open source, multiplayer, extensible rogue-like", link: "https://github.com/SREphoto/roguish" },
-    { title: "PixelPlatformer", desc: "Platformer html5 game developed in Entity.", link: "https://github.com/SREphoto/PixelPlatformer" }
+    { title: "PixelPlatformer", desc: "Platformer html5 game developed in Entity.", link: "https://github.com/SREphoto/PixelPlatformer" },
+    { title: "LaneShark", desc: "A thrilling underwater bowling experience.", link: "https://github.com/SREphoto/LaneShark" }
 ];
+
