@@ -104,12 +104,12 @@ const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
         whileHover={{ y: -5 }}
         className="group relative overflow-hidden rounded-2xl h-[300px] bg-gray-900 border border-glass-border"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-95 transition-opacity z-10" />
         <img
           src={img}
           alt={title}
-          style={{ filter: `hue-rotate(${hue}deg)` }}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+          style={{ filter: `hue-rotate(${hue}deg) saturate(1.2)` }}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
         />
 
         <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -123,16 +123,24 @@ const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
           </a>
         </div>
 
+        {/* Icon added to top-left */}
+        <div className="absolute top-4 left-4 z-20">
+          <div className="w-10 h-10 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-primary/80 group-hover:text-primary transition-colors">
+            <Icon size={20} />
+          </div>
+        </div>
+
         <div className="absolute bottom-0 left-0 w-full p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-primary text-xs font-bold tracking-widest uppercase">{cat}</span>
+            <span className="text-primary text-xs font-bold tracking-widest uppercase truncate max-w-[200px]">{cat}</span>
           </div>
-          <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
+          <h3 className="text-2xl font-bold mb-2 text-white leading-tight">{title}</h3>
         </div>
       </motion.div>
     );
   }
 
+  // Fallback for no image (though we aim to always provide one now)
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -175,67 +183,82 @@ const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
 const getProjectAssets = (title) => {
   const t = title.toLowerCase();
 
+  // Use Vite's base URL for assets
+  const baseUrl = import.meta.env.BASE_URL;
+  const p = (path) => `${baseUrl}projects/${path}`;
+
   let icon = Code;
   let img = null;
 
+  // --- ICON STRATEGY ---
+  if (t.includes('game') || t.includes('kart') || t.includes('rpg') || t.includes('zelda') || t.includes('tetris') || t.includes('outrun')) icon = Gamepad2;
+  else if (t.includes('ai') || t.includes('gpt') || t.includes('brain') || t.includes('bot')) icon = Brain;
+  else if (t.includes('tool') || t.includes('generator') || t.includes('editor')) icon = Wrench;
+  else if (t.includes('design') || t.includes('art') || t.includes('pixel') || t.includes('style')) icon = Palette;
+  else if (t.includes('music') || t.includes('audio') || t.includes('midi') || t.includes('sound')) icon = Music;
+  else if (t.includes('web') || t.includes('app') || t.includes('site') || t.includes('portfolio')) icon = Layout;
+  else if (t.includes('data') || t.includes('calc') || t.includes('analysis')) icon = Database;
+  else if (t.includes('dev') || t.includes('code') || t.includes('guide')) icon = Terminal;
+
   // --- IMAGE MAPPING STRATEGY ---
-  // We have 14 HQ assets. We map them broadly to cover as many of the 88 repos as possible.
+  // We have 14 HQ assets. We map them broadly to cover as many of the repos as possible.
 
   // 1. ZELDA / ADVENTURE (Green/Fantasy)
-  if (t.includes('zelda') || t.includes('adventure') || t.includes('legend') || t.includes('quest') || t.includes('flirt')) img = "/projects/zelda_clone.png";
+  if (t.includes('zelda') || t.includes('adventure') || t.includes('legend') || t.includes('quest') || t.includes('flirt')) img = p("zelda_clone.png");
 
   // 2. DIABLO / DARK RPG (Dark/Red)
-  else if (t.includes('diablo') || t.includes('rogue') || t.includes('strike') || t.includes('battle') || t.includes('roguish')) img = "/projects/diablo_js.png";
+  else if (t.includes('diablo') || t.includes('rogue') || t.includes('strike') || t.includes('battle') || t.includes('roguish')) img = p("diablo_js.png");
 
   // 3. OUTRUN / NEON / CYBERPUNK (Purple/Retro)
-  else if (t.includes('outrun') || t.includes('topgun') || t.includes('prompter') || t.includes('neon') || t.includes('cyber') || t.includes('synth') || t.includes('retro') || t.includes('run')) img = "/projects/outrun_game.png";
+  else if (t.includes('outrun') || t.includes('topgun') || t.includes('prompter') || t.includes('neon') || t.includes('cyber') || t.includes('synth') || t.includes('retro') || t.includes('run')) img = p("outrun_game.png");
 
   // 4. METROPOLIS / CITY / BLUE (Clean/Tech)
-  else if (t.includes('sky') || t.includes('metro') || t.includes('city') || t.includes('aquaria') || t.includes('launch') || t.includes('deploy') || t.includes('connect')) img = "/projects/sky_metropolis.png";
+  else if (t.includes('sky') || t.includes('metro') || t.includes('city') || t.includes('aquaria') || t.includes('launch') || t.includes('deploy') || t.includes('connect')) img = p("sky_metropolis.png");
 
   // 5. FRACTAL / MATH / MUSIC (Abstract/Colorful)
-  else if (t.includes('fractal') || t.includes('music') || t.includes('video') || t.includes('lyric') || t.includes('kinetic') || t.includes('shape') || t.includes('dream') || t.includes('aura')) img = "/projects/fractalization.png";
+  else if (t.includes('fractal') || t.includes('music') || t.includes('video') || t.includes('lyric') || t.includes('kinetic') || t.includes('shape') || t.includes('dream') || t.includes('aura')) img = p("fractalization.png");
 
   // 6. SUPERTUX / RACING (3D/Action)
-  else if (t.includes('super') || t.includes('tux') || t.includes('kart') || t.includes('race') || t.includes('car') || t.includes('gas') || t.includes('gauge')) img = "/projects/supertuxkart.png";
+  else if (t.includes('super') || t.includes('tux') || t.includes('kart') || t.includes('race') || t.includes('car') || t.includes('gas') || t.includes('gauge')) img = p("supertuxkart.png");
 
   // 7. TREASURE / MAPS (Map/Location)
-  else if (t.includes('local') || t.includes('treasure') || t.includes('map') || t.includes('tribes') || t.includes('tribe')) img = "/projects/localtreasures.png";
+  else if (t.includes('local') || t.includes('treasure') || t.includes('map') || t.includes('tribes') || t.includes('tribe')) img = p("localtreasures.png");
 
   // 8. REIA / MMO (Fantasy/Multiplayer)
-  else if (t.includes('reia') || t.includes('mmo') || t.includes('multi') || t.includes('texas') || t.includes('poker')) img = "/projects/reia.png";
+  else if (t.includes('reia') || t.includes('mmo') || t.includes('multi') || t.includes('texas') || t.includes('poker')) img = p("reia.png");
 
   // 9. WELLNEST / HEALTH (Calm/Blue)
-  else if (t.includes('well') || t.includes('health') || t.includes('life') || t.includes('care') || t.includes('exam') || t.includes('doc') || t.includes('intelli')) img = "/projects/wellnest.png";
+  else if (t.includes('well') || t.includes('social') || t.includes('health') || t.includes('life') || t.includes('care') || t.includes('exam') || t.includes('doc') || t.includes('intelli')) img = p("wellnest.png");
 
   // 10. WORDSLIDE / PUZZLE (Clean/Game)
-  else if (t.includes('word') || t.includes('slide') || t.includes('puzzle') || t.includes('game') || t.includes('tetris')) img = "/projects/wordslide.png";
+  else if (t.includes('word') || t.includes('slide') || t.includes('puzzle') || t.includes('game') || t.includes('tetris')) img = p("wordslide.png");
 
   // 11. STORYWEAVER / TEXT (Book/Creative)
-  else if (t.includes('story') || t.includes('write') || t.includes('punchline') || t.includes('meme') || t.includes('calendar')) img = "/projects/storyweaver.png";
+  else if (t.includes('story') || t.includes('write') || t.includes('punchline') || t.includes('meme') || t.includes('calendar') || t.includes('info') || t.includes('genius')) img = p("storyweaver.png");
 
   // 12. ASSET STUDIO / TOOLS (Dark/Editor)
-  else if (t.includes('asset') || t.includes('studio') || t.includes('generator') || t.includes('forge') || t.includes('fashion') || t.includes('design') || t.includes('photo') || t.includes('image')) img = "/projects/asset_studio.png";
+  else if (t.includes('asset') || t.includes('studio') || t.includes('generator') || t.includes('forge') || t.includes('fashion') || t.includes('design') || t.includes('photo') || t.includes('image')) img = p("asset_studio.png");
 
   // 13. HOME PLANNER / ARCH (Blueprint/Tech)
-  else if (t.includes('home') || t.includes('plan') || t.includes('arch') || t.includes('grid') || t.includes('spec')) img = "/projects/homeplanner.png";
+  else if (t.includes('home') || t.includes('plan') || t.includes('arch') || t.includes('grid') || t.includes('spec')) img = p("homeplanner.png");
 
   // 14. SPRITEFORGE / PIXEL (Pixel Art)
-  else if (t.includes('sprite') || t.includes('pixel') || t.includes('gba') || t.includes('boy') || t.includes('iodine')) img = "/projects/spriteforge.png";
+  else if (t.includes('sprite') || t.includes('pixel') || t.includes('gba') || t.includes('boy') || t.includes('iodine')) img = p("spriteforge.png");
 
-  // Fallback Abstract for anything else
-  else img = "/projects/fractalization.png";
-
-
-  // --- ICON STRATEGY ---
-  if (t.includes('game') || t.includes('kart') || t.includes('rpg') || t.includes('zelda')) icon = Gamepad2;
-  else if (t.includes('ai') || t.includes('gpt') || t.includes('brain')) icon = Brain;
-  else if (t.includes('tool') || t.includes('generator')) icon = Wrench;
-  else if (t.includes('design') || t.includes('art') || t.includes('pixel')) icon = Palette;
-  else if (t.includes('music') || t.includes('audio')) icon = Music;
-  else if (t.includes('web') || t.includes('app') || t.includes('site')) icon = Layout;
-  else if (t.includes('data')) icon = Database;
-  else if (t.includes('dev') || t.includes('code')) icon = Terminal;
+  // FALLBACK: Deterministic Random Distribution
+  // Use the title to pick a "random" fallback so not everything is fractalization
+  else {
+    const fallbackOptions = [
+      "fractalization.png",
+      "sky_metropolis.png",
+      "asset_studio.png",
+      "wellnest.png"
+    ];
+    // Simple hash
+    const hash = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const index = hash % fallbackOptions.length;
+    img = p(fallbackOptions[index]);
+  }
 
   return { icon, img };
 };
