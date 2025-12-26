@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, Code, Zap, ChevronDown, Palette, Gamepad2, Brain, Terminal, Variable, Layout, Music, FileText, Database, Wrench } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, Zap, ChevronDown, Palette, Gamepad2, Brain, Terminal, Variable, Layout, Music, FileText, Database, Wrench, Video } from 'lucide-react';
 import './App.css';
 
 const Navbar = () => {
@@ -20,8 +20,8 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest text-muted hover:text-white transition-colors">
           <a href="#work" className="hover:text-primary transition-colors">Work</a>
-          <a href="#services" className="hover:text-primary transition-colors">Services</a>
-          <a href="#about" className="hover:text-primary transition-colors">About</a>
+          <a href="#videos" className="hover:text-primary transition-colors">Videos</a>
+          <a href="#art" className="hover:text-primary transition-colors">Art</a>
           <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
         </div>
         <a href="#contact" className="btn btn-primary text-xs px-6 py-3">Let's Talk</a>
@@ -90,6 +90,8 @@ const ServiceCard = ({ icon: Icon, title, desc }) => (
 );
 
 import { projects } from './data/repos';
+import { midjourneyArt } from './data/midjourney';
+
 
 const ProjectCard = ({ title, cat, icon: Icon, img, link = "#" }) => {
   // Generate a unique hue rotation based on the title hash
@@ -320,6 +322,152 @@ const App = () => {
                 />
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section id="videos" className="py-32 relative">
+        <div className="container">
+          <div className="text-center mb-20">
+            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Content Creation</span>
+            <h2 className="text-5xl md:text-6xl font-bold">Video <span className="text-gradient">Showcase</span></h2>
+            <p className="text-muted mt-4 text-lg max-w-2xl mx-auto">
+              Tutorials, demos, and behind-the-scenes content from my YouTube channel
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Featured Video */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card overflow-hidden p-0"
+            >
+              <div className="aspect-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed?listType=user_uploads&list=SamuelErwin-d2s"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <div className="p-8 text-center">
+                <a
+                  href="https://www.youtube.com/@SamuelErwin-d2s"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary inline-flex items-center gap-2"
+                >
+                  <Video size={20} />
+                  Visit My Channel
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Channel Stats / Info */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="glass-card text-center"
+              >
+                <Video className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-2xl font-bold mb-2">Latest Content</h3>
+                <p className="text-muted">Tutorials \u0026 Walkthroughs</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="glass-card text-center"
+              >
+                <Code className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-2xl font-bold mb-2">Tech Demos</h3>
+                <p className="text-muted">Project Showcases</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="glass-card text-center"
+              >
+                <Zap className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-2xl font-bold mb-2">Quick Tips</h3>
+                <p className="text-muted">Development Insights</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="art" className="py-32 bg-gray-950/50 relative">
+        <div className="container">
+          <div className="text-center mb-20">
+            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">AI Art Gallery</span>
+            <h2 className="text-5xl md:text-6xl font-bold">Midjourney <span className="text-gradient">Creations</span></h2>
+            <p className="text-muted mt-4 text-lg max-w-2xl mx-auto">
+              Exploring the intersection of art and artificial intelligence
+            </p>
+            <a
+              href="https://www.midjourney.com/@srestudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mt-4"
+            >
+              <Palette size={20} />
+              <span>Visit my Midjourney Profile</span>
+              <ExternalLink size={16} />
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {midjourneyArt.map((artwork, index) => (
+              <motion.div
+                key={artwork.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group relative overflow-hidden rounded-2xl bg-gray-900 border border-glass-border cursor-pointer"
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={artwork.url}
+                    alt={artwork.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">{artwork.title}</h3>
+                    <p className="text-primary text-sm font-bold tracking-widest uppercase">{artwork.category}</p>
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="p-2 bg-black/50 backdrop-blur-md rounded-full text-primary">
+                    <ExternalLink size={20} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16">
+            <p className="text-muted mb-6">
+              Want to add your own images? Update <code className="text-primary bg-gray-900 px-2 py-1 rounded">src/data/midjourney.js</code>
+            </p>
           </div>
         </div>
       </section>
