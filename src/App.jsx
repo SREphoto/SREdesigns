@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ExternalLink, Code, Zap, ChevronDown, Palette, Gamepad2, Brain, Terminal, Variable, Layout, Music, FileText, Database, Wrench, Video } from 'lucide-react';
 import './App.css';
+import Blog from './components/Blog';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
