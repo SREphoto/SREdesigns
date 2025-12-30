@@ -1,62 +1,54 @@
-<!-- AGENT_INSTRUCTIONS_START
-### 🤖 Agent Protocol: Port Management & Registry Sync
+### ?? Agent Protocol: Central Port Registry System
 
-**Objective**: Maintain a conflict-free registry of ports for all applications in the user's workspace, supporting multi-service apps (Frontend + Backend).
+**Objective**: This file is the **SINGLE SOURCE OF TRUTH** for all application ports on this machine.
 
-**When you encounter this file in a project:**
-1.  **Identify the Project**: Read `package.json` to get the `name` of the current project. If no `package.json`, use the folder name.
-2.  **Scan Registry**: Read the "Port Registry" table below.
-3.  **Determine Action**:
-    *   **Project IS listed with valid ports**: Verify local config matches. If not, update local config.
-    *   **Project IS listed but Ports are "Pending"**:
-        1.  Find the **highest numeric port** currently assigned in the table (scan ALL columns).
-        2.  Assign the **next available port(s)** to this project.
-            *   If Single App: Assign `Highest + 1`.
-            *   If Full Stack (FE + BE): Assign `Highest + 1` (FE) and `Highest + 2` (BE).
-        3.  **Update the table** with the new ports.
-        4.  **Update local config** files (`vite.config.js`, `index.js`, `.env`) to use these new ports.
-    *   **Project is NOT listed (New App)**:
-        1.  Find the **highest numeric port** currently assigned in the table.
-        2.  Assign the **next available port(s)**.
-        3.  **Add to Registry**: Append a new row to the **bottom** of the table with the Project Name, New Ports, and Description.
-        4.  **Configure App**: Update the local configuration files to use these new ports.
+**When you encounter this file:**
 
-**Configuration Update Guide**:
-*   **Vite (`vite.config.ts`/`js`)**: 
-    *   Update `server: { port: <FE_PORT> }`.
-    *   Update proxy target: `target: 'http://localhost:<BE_PORT>'`.
-*   **Express/Node (`index.ts`/`js`)**: Update `const port = <BE_PORT>;` or `app.listen(<BE_PORT>)`.
-*   **Environment (`.env`)**: Update `PORT=<BE_PORT>` (and `VITE_API_URL` if applicable).
+1. **Read-Only for Verification**: If just checking ports, read the table.
+2. **Assigning New Ports**:
+    * Find the highest used port in the "Master Port Registry".
+    * Assign the next available port(s) to the new application.
+    * **IMMEDIATELY ADD** the new app to this table.
+    * **SAVE** this file.
 
-AGENT_INSTRUCTIONS_END -->
+**When you are in a Project Folder (e.g., c:\Users\SREphoto\Reia):**
 
-# 🌐 Application Access & Port Registry
+1. **CHECK HERE FIRST**: Always read R:\Antigravity Multiple\_CENTRAL_REGISTRY\APP_ACCESS.md before assigning ports.
+2. **UPDATE HERE**: If you assign a port, update THIS file.
+3. **SYNC LOCAL**: You may copy this file to the project folder as APP_ACCESS.md for local reference, or create a stub pointing here.
 
-## 🚀 Current Context: SREdesigns Portfolio
-*   **Local URL**: [http://localhost:3005](http://localhost:3005)
-*   **Frontend Port**: `3005`
-*   **Backend Port**: `-` (Static/Client-side)
+# ?? Global Application Access & Port Registry
 
----
-
-## 📒 Master Port Registry
+## ?? Master Port Registry
 
 | Application Name | Frontend Port | Backend Port | Port Details | Description |
 |------------------|---------------|--------------|--------------|-------------|
-| **WellNest** | 3000 | - | 3000: Main App (Next.js/React) | Mental health tracking app (Full Stack) |
+| **WellNest (V1)** | 5173 | 3000 | 5173: Frontend, 3000: Backend API | Original App |
 | **WordSlide** | 3001 | - | 3001: Game Interface | Word Puzzle Game |
-| **storyweaver** | 3002 | 3003 | 3002: UI/Vite Server<br>3003: API/Express Server | Interactive Story Builder |
-| **3D Asset Studio** | 3004 | - | 3004: Vite Dev Server | AI-powered 3D Asset Generator |
-| **SREdesigns Portfolio** | 3005 | - | 3005: Vite Dev Server | Personal Design Portfolio |
-| **HomePlanner** | Pending | Pending | - | *Reserved* |
-| **Word-Music-Game** | Pending | Pending | - | *Reserved* |
-| **AI-Sprite-Forge-Playground-2** | Pending | Pending | - | *Reserved* |
+| **storyweaver** | 3002 | 3003 | Live on Render: <https://storyweaver-api.onrender.com> | [Live App](https://srephoto.github.io/storyweaver/#/) - Fully Functional |
+| **HomePlanner** | 3004 | - | 3004: Frontend (Vite) | AI Home Design Tool |
+| **SREdesigns** | 3005 | - | 3005: Frontend (Vite) | Professional Portfolio |
+| **WellNest V2 (B2GTHR)** | 3009 | - | 3009: Reimaged UI (React/Vite) | New Tab-based Version (Frontend Only) |
+| **Flirt Game** | 3010 | - | 3010: Frontend (Vite) | Character Connection Quest |
+| **Reia** | 3011 | 3011 | 3011: Game Server (Rust/Godot) | Action-Adventure RPG |
+| **Diablo JS Remastered** | 3012 | - | 3012: Frontend (Vite) | Isometric ARPG Engine |
+| **TopGunPrompter** | 3020 | - | 3020: Frontend (Vite) | Top Gun & Blockbuster Style Prompter |
+| **Interactive Launchpad** | 3021 | - | 3021: Frontend (Vite) | AI Deployment Guide & Toolset |
+| **IodineGBA** | 3023 | - | 3023: Frontend (http-server) | JS GameBoy Advance Emulator |
+| **Dynamic Probability** | 3024 | - | 3024: Streamlit | Advanced Probability & Stats Suite |
+| **Gemini-Turbo-Outrun** | 3025 | - | 3025: Frontend (Vite) | Retro Outrun Style Racer |
+| **MadMenPromptCreator** | 3026 | - | 3026: Frontend (Vite) | Mad Men Fashion Styling App |
+| **3D Asset Studio** | 3027 | - | 3027: Frontend (Vite) | 3D Model Viewer & Manager |
+| **Tetris** | 3028 | - | 3028: Frontend (Vite) | Classic Tetris Clone |
+| **Fantasy Map Designer** | 3029 | - | 3029: Frontend (Vite) | World Map Creation Tool |
+| **Iconify** | 3030 | - | 3030: Frontend (Vite) | Icon Management System |
+| **Punchline Master** | 3031 | - | 3031: Frontend (Vite) | Meme & Joke Calendar |
+| **StoryBoard Creator** | 3032 | - | 3032: Frontend (Vite) | Scene Planning Tool |
+| **OCR App** | 3033 | - | 3033: Frontend (Vite) | Image Text Extraction |
+| **SuperTuxKart** | 3034 | - | 3034: Game Client | Open Source Racing Game |
+| **Word-Music-Game** | 3035 | - | 3035: Frontend (Vite) | Word Guided Real-time Music |
+| **LaneShark (Strike King Bowling)** | 3036 | - | 3036: Frontend (Vite) | Premium Bowling Game with AI Commentary |
+| **PixelArt Pro** | 3037 | - | 3037: Frontend (Vite) | Professional suite for pixel artists |
+| **Antigravity Hub** | 3038 | - | 3038: Next.js Dashboard | **NEW** Ecosystem Manager |
 
-*(Agent: Add new projects above this line. Keep table sorted by Port if possible.)*
-
----
-
-### 🛠️ How to Run This App
-1.  Ensure you are in the project root.
-2.  Run `npm run dev` (This usually runs both FE and BE concurrently).
-3.  Access via the **Local URL** defined at the top.
+### *Note: Add new projects above this line. Keep table sorted by Port if possible.*

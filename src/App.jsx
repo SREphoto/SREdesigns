@@ -20,6 +20,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest text-muted hover:text-white transition-colors">
           <a href="#work" className="hover:text-primary transition-colors">Work</a>
+          <a href="#blog" className="hover:text-primary transition-colors">Blog</a>
           <a href="#videos" className="hover:text-primary transition-colors">Videos</a>
           <a href="#art" className="hover:text-primary transition-colors">Art</a>
           <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
@@ -471,6 +472,8 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      <Blog />
 
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
