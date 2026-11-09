@@ -25,36 +25,55 @@ export const blogPosts = [
   },
   {
     id: 2,
-    title: "Architecting 18 Scientific Digital Twins: Procedural CAD, Dual-Truth Metrology & Circuit Continuity",
+    title: "SREdesigns Unveils Groundbreaking Suite of 1:1 Scientific Digital Twins with Genuine Internal Anatomy and Dual-Truth Metrology",
     date: "November 9, 2026",
-    category: "Scientific Computing & 3D",
-    excerpt: "Why standard 3D meshes fail for precision laboratory digital twins, and how we engineered 1:1 procedural CAD, USP-compliant metrology equations, and physical circuit continuity in the browser.",
+    category: "Official Press Release",
+    excerpt: "AUSTIN & CAMBRIDGE — SRE Laboratory Systems (SREdesigns) announces the open-access release of its next-generation Digital Twin Suite, bringing unprecedented mechanical fidelity, physical circuit continuity, and internal working electromechanical anatomy to web-based simulation.",
     content: `
-      <p>Most 3D models on the web are hollow cosmetic shells—low-poly meshes wrapped in baked 2D texture maps with no internal logic, no physical constraints, and zero empirical validity. When a pharmaceutical scientist or an engineer looks inside, the illusion shatters.</p>
-      
-      <p>Over the past several months, we engineered an open-access fleet of <strong>18 precision scientific laboratory instruments</strong> and the <strong>2026 Formula 1 engineering suite</strong> directly in WebGL. Every instrument runs in real time at 60 FPS in standard browser viewports with zero plugins.</p>
+      <div class="border-l-2 border-emerald-400 pl-4 my-6 bg-white/[0.02] p-4 rounded-r-lg font-mono text-xs text-zinc-300 space-y-2">
+        <p class="font-bold text-emerald-400 uppercase tracking-widest text-[11px]">FOR IMMEDIATE RELEASE</p>
+        <p><strong class="text-zinc-100">AUSTIN, Texas &amp; CAMBRIDGE, Mass. — November 9, 2026</strong> — SRE Laboratory Systems (SREdesigns) today announced the open-access release of its next-generation Digital Twin Suite, bringing unprecedented mechanical fidelity, physical circuit continuity, and internal working electromechanical anatomy to web-based simulation. The suite is live today at <a href="https://srephoto.github.io/Twins/" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">https://srephoto.github.io/Twins/</a>.</p>
+      </div>
 
-      <h3>1. Procedural 1:1 CAD Architecture</h3>
-      <p>Instead of importing opaque polygon blobs, every instrument is synthesized programmatically using procedural CAD primitives. Fasteners follow exact DIN 912 socket head cap screw geometries, stepper motors have wound copper armatures and steel laminations, and optical paths feature real 45° first-surface mirrors and diffraction gratings.</p>
-      <p>Because the models are procedural, users can execute interactive exploded views, isolate internal switch-mode power supplies, inspect motherboard bus traces, and inspect drive belts with zero polygonal distortion.</p>
+      <p>While digital twins in aerospace and manufacturing have historically been locked inside proprietary CAD software or priced out of reach for academic institutions, the <strong>SRE Digital Twin Suite</strong> operates natively in any modern web browser on desktop, tablet, and mobile with zero plugins. Every instrument is procedurally designed to 1:1 scale down to genuine 3D DIN fasteners, precision internal brushless motors, solid-state relays, color-coded wiring harnesses, and interactive high-DPI LCD displays.</p>
 
-      <h3>2. Dual-Truth Metrological Physics</h3>
-      <p>A digital twin is useless if its digital readout is arbitrary. We implemented dual-truth metrological models grounded in verifiable physical laws and pharmacopeial standards:</p>
-      <ul class="list-disc pl-5 mb-4 space-y-2">
-        <li><strong>ERWEKA ZT 322 Disintegration Tester:</strong> Harmonic stroke kinematics strictly governed by USP &lt;701&gt; (55.0 mm stroke amplitude at 30.0 CPM), with PT100 thermal immersion bath dissipation.</li>
-        <li><strong>Eppendorf Micro 5424-R Centrifuge:</strong> Stokes sedimentation rate calculations, centrifugal stress fields reaching 21,130 &times; g RCF at 15,000 RPM, dynamic rotor balancing, and refrigeration thermodynamics from -10°C to +40°C.</li>
-        <li><strong>METTLER TOLEDO XSE204 Balance:</strong> 0.1 mg electromagnetic force restoration (EMFR) voice-coil equilibrium with motorized proFACT self-calibration.</li>
-        <li><strong>Shimadzu UV-1900i Spectrophotometer:</strong> Czerny-Turner blazed holographic optics and Beer-Lambert absorbance curves across 190–1100 nm.</li>
+      <blockquote class="border-l-4 border-emerald-400 pl-4 py-2 italic text-zinc-300 my-6 bg-white/[0.02] rounded-r">
+        "Most 3D models on the web are hollow shells with painted-on textures that misrepresent how laboratory instruments actually function," said the Lead Systems Architect at SREdesigns. "In our twins, every single screw has real depth. If you pull the power cord from the wall outlet, the machine instantly loses power: the LCD blacks out, the drive motor coasts to zero, and the heaters shut off. Furthermore, with a single click, operators can explode the chassis upward to inspect the internal switching power supply, motor driver linkages, optical encoders, and ARM Cortex-M4 motherboard."
+      </blockquote>
+
+      <h3>Flagship Instruments &amp; Interactive Playgrounds</h3>
+      <ul class="list-disc pl-5 mb-6 space-y-3">
+        <li>
+          <strong>ERWEKA ZT 322 Tablet Disintegration &amp; Harmonic Drive:</strong> USP &lt;701&gt; harmonic stroke (55.0 mm amplitude at 30.0 CPM), 10-mesh basket screens, 1000W PT100 immersion circulator, and 45° gold optical relays.
+          <br />
+          <a href="https://srephoto.github.io/Twins/disintegration_tester_twin/software/viewer/index.html?theme=retro" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline text-xs font-mono inline-flex items-center gap-1 mt-1">▶ Launch Erweka Machine Playground (Retro Theme) &rarr;</a>
+          <br />
+          <a href="https://srephoto.github.io/Twins/disintegration_tester_twin/docs/ERWEKA_ZT322_Social_Walkthrough.mp4" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white text-xs font-mono inline-flex items-center gap-1">🎬 Watch 1080p Narrated Video Walkthrough &rarr;</a>
+        </li>
+        <li>
+          <strong>Eppendorf Micro 5424-R Refrigerated Microcentrifuge:</strong> 15,000 RPM (21,130 &times; g RCF), aerosol-tight 24 &times; 1.5/2.0 mL QuickLock rotor, dynamic Stokes pelleting physics, and -10°C to +40°C thermal refrigeration.
+          <br />
+          <a href="https://srephoto.github.io/Twins/centrifuge_twin/software/viewer/index.html?theme=retro" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline text-xs font-mono inline-flex items-center gap-1 mt-1">▶ Launch Microcentrifuge Machine Playground (Retro Theme) &rarr;</a>
+          <br />
+          <a href="https://srephoto.github.io/Twins/centrifuge_twin/docs/CENTRIFUGE_Social_Walkthrough.mp4" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white text-xs font-mono inline-flex items-center gap-1">🎬 Watch 1080p Narrated Video Walkthrough &rarr;</a>
+        </li>
+        <li>
+          <strong>Grand Biomedical Complex (14-Zone Master Lab):</strong> 14-zone pharmaceutical campus featuring synthesis bays, analytical chromatography suites, QC testing cleanrooms, and executive facilities.
+          <br />
+          <a href="https://srephoto.github.io/Twins/lab_viewer/index.html?theme=retro" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline text-xs font-mono inline-flex items-center gap-1 mt-1">▶ Explore Master Lab Complex (Retro Theme) &rarr;</a>
+        </li>
       </ul>
 
-      <h3>3. Hardwired Circuit Continuity</h3>
-      <p>In real laboratories, equipment fails when cables unplug, fuses blow, or thermal limits are exceeded. In our digital twins, electrical continuity is physically simulated from the NEMA 5-15P AC mains plug, through circuit breakers, stepped-down switch-mode power supply rails (24V, 12V, 5V, 3.3V), down to individual status LEDs and microcontroller logic.</p>
-      <p>Pulling the mains plug causes immediate screen blackout, capacitor discharge fade, and inertial motor coast-down governed by mechanical moment of inertia.</p>
+      <p>The suite is accompanied by a master multimedia presentation portal at <a href="https://srephoto.github.io/Twins/presentations.html" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-mono">https://srephoto.github.io/Twins/presentations.html</a> featuring 1080p narrated video teardowns, interactive chapter scrubbers, and GLP analytical data audit trail exports.</p>
 
-      <h3>4. Master PR Campaign & Media Kit</h3>
-      <p>To support global academic institutions, pharmaceutical training programs, and the open-source engineering community, we have published the complete interactive Press Room and Media Kit, complete with high-resolution teardown photography, narrated 1080p video walkthroughs, and PR distribution copy.</p>
-
-      <p><a href="https://srephoto.github.io/Twins/docs/pr_campaign.html" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-semibold">Explore the Live PR Campaign Hub & Press Room &rarr;</a></p>
+      <div class="mt-8 pt-6 border-t border-white/10 font-mono text-xs text-zinc-400 space-y-1">
+        <p><strong class="text-zinc-200">Media Contact:</strong></p>
+        <p>Press Relations Department</p>
+        <p>SRE Laboratory Systems</p>
+        <p>Email: <a href="mailto:press@sredesigns.lab" class="text-emerald-400 hover:underline">press@sredesigns.lab</a></p>
+        <p>Web: <a href="https://srephoto.github.io/Twins/" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">https://srephoto.github.io/Twins/</a></p>
+        <p>Read full PR: <a href="https://srephoto.github.io/Twins/docs/PR_CAMPAIGN_AND_SOCIAL_MEDIA_STRATEGY.md" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">PR Campaign &amp; Social Strategy Dossier &rarr;</a></p>
+      </div>
     `,
     image: "projects/digital_twins_exploded.png"
   }

@@ -214,6 +214,23 @@ const HeroBrowserMockup = ({ onOpenModal }) => {
 
   const showcases = [
     {
+      id: 'f1',
+      label: '🏎️ Formula 1 Apex Legends',
+      address: 'formula-1-apex.web.app',
+      telemetry: '60 FPS · WEBGL 3D',
+      badge: 'WebGL 3D · Three.js',
+      badgeClass: 'bg-lime-400/20 text-lime-300 border-lime-400/30',
+      subtitle: '11 Teams · 24 Tracks',
+      title: 'Formula 1 Apex Legends',
+      image: `${baseUrl}projects/f1_apex_legends.jpg`,
+      projectData: {
+        title: 'Formula 1 Apex Legends',
+        desc: '2026 FIA F1 Nimble Car 3D WebGL Simulator with 11 Teams, 24 Circuits & Active Aerodynamics',
+        link: 'https://formula-1-apex.web.app/',
+        githubUrl: 'https://github.com/SREphoto/2026-F1-Nimble-Car',
+      },
+    },
+    {
       id: 'twins',
       label: '🔬 18 Digital Twins Lab',
       address: 'srephoto.github.io/Twins',
@@ -231,20 +248,39 @@ const HeroBrowserMockup = ({ onOpenModal }) => {
       },
     },
     {
-      id: 'f1',
-      label: '🏎️ F1 2026 Simulator',
-      address: 'formula-1-apex.web.app',
-      telemetry: '60 FPS · WEBGL 3D',
-      badge: 'WebGL 3D · Three.js',
-      badgeClass: 'bg-lime-400/20 text-lime-300 border-lime-400/30',
-      subtitle: '11 Teams · 24 Tracks',
-      title: 'Formula 1 Apex Legends',
-      image: `${baseUrl}projects/f1_apex_legends.jpg`,
+      id: 'erweka',
+      label: '⚙️ ERWEKA ZT 322',
+      address: 'srephoto.github.io/Twins/disintegration_tester_twin/',
+      telemetry: 'USP <701> · HARMONIC',
+      badge: 'USP <701> Metrology · CAD',
+      badgeClass: 'bg-amber-400/20 text-amber-300 border-amber-400/30',
+      subtitle: '10-Mesh Screens · PT100 Bath',
+      title: 'ERWEKA ZT 322 Tablet Disintegration & Harmonic Drive',
+      image: `${baseUrl}projects/digital_twins_zt322.png`,
       projectData: {
-        title: 'Formula 1 Apex Legends',
-        desc: '2026 FIA F1 Nimble Car 3D WebGL Simulator',
-        link: 'https://formula-1-apex.web.app/',
-        githubUrl: 'https://github.com/SREphoto/2026-F1-Nimble-Car',
+        title: 'ERWEKA ZT 322 Tablet Disintegration & Harmonic Drive',
+        desc: 'USP <701> harmonic stroke disintegration tester with 10-mesh basket screens, 1000W PT100 immersion circulator & dynamic optics',
+        link: 'https://srephoto.github.io/Twins/disintegration_tester_twin/software/viewer/index.html?theme=retro',
+        videoUrl: 'https://srephoto.github.io/Twins/disintegration_tester_twin/docs/ERWEKA_ZT322_Social_Walkthrough.mp4',
+        githubUrl: 'https://github.com/SREphoto/Twins',
+      },
+    },
+    {
+      id: 'centrifuge',
+      label: '🌀 Eppendorf 5424-R',
+      address: 'srephoto.github.io/Twins/centrifuge_twin/',
+      telemetry: '15,000 RPM · 21,130 × g',
+      badge: 'Stokes Pelleting · QuickLock',
+      badgeClass: 'bg-cyan-400/20 text-cyan-300 border-cyan-400/30',
+      subtitle: '-10°C to +40°C Active Cooling',
+      title: 'Eppendorf Micro 5424-R Refrigerated Microcentrifuge',
+      image: `${baseUrl}projects/digital_twins_exploded.png`,
+      projectData: {
+        title: 'Eppendorf Micro 5424-R Refrigerated Microcentrifuge',
+        desc: '15,000 RPM refrigerated microcentrifuge with 21,130 x g Stokes pelleting, aerosol-tight QuickLock rotor & dynamic cooling',
+        link: 'https://srephoto.github.io/Twins/centrifuge_twin/software/viewer/index.html?theme=retro',
+        videoUrl: 'https://srephoto.github.io/Twins/centrifuge_twin/docs/CENTRIFUGE_Social_Walkthrough.mp4',
+        githubUrl: 'https://github.com/SREphoto/Twins',
       },
     },
   ];
@@ -254,7 +290,7 @@ const HeroBrowserMockup = ({ onOpenModal }) => {
   return (
     <div className="w-full max-w-lg mx-auto">
       {/* Switcher Tabs */}
-      <div className="flex items-center justify-center gap-2 mb-3">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3">
         {showcases.map((s, idx) => (
           <button
             key={s.id}
@@ -637,9 +673,10 @@ const getProjectAssets = (title) => {
   else if (t.includes('dev') || t.includes('code') || t.includes('guide')) icon = Terminal;
 
   // Local Project Artwork Mapping
-  if (t.includes('twin') && (t.includes('pr') || t.includes('media') || t.includes('campaign') || t.includes('portal') || t.includes('kit'))) img = p("digital_twins_exploded.png");
-  else if (t.includes('disintegration') || t.includes('zt 322') || t.includes('zt322')) img = p("digital_twins_zt322.png");
-  else if (t.includes('twin') || t.includes('laboratory') || t.includes('centrifuge') || t.includes('balance') || t.includes('reactor')) img = p("digital_twins_lab.png");
+  if (t.includes('centrifuge')) img = p("digital_twins_exploded.png");
+  else if (t.includes('disintegration') || t.includes('zt 322') || t.includes('zt322') || t.includes('erweka')) img = p("digital_twins_zt322.png");
+  else if (t.includes('twin') && (t.includes('pr') || t.includes('media') || t.includes('campaign') || t.includes('portal') || t.includes('kit'))) img = p("digital_twins_exploded.png");
+  else if (t.includes('twin') || t.includes('laboratory') || t.includes('balance') || t.includes('reactor') || t.includes('biomedical') || t.includes('lab')) img = p("digital_twins_lab.png");
   else if (t.includes('formula') || t.includes('apex') || t.includes('nimble')) img = p("f1_apex_legends.jpg");
   else if (t.includes('chem')) img = p("chemmate.png");
   else if (t.includes('zelda') || t.includes('adventure') || t.includes('legend') || t.includes('quest') || t.includes('flirt')) img = p("zelda_clone.png");
@@ -686,6 +723,8 @@ const ArchitecturalProjectCard = ({ project, onOpenDetails }) => {
         <img
           src={img}
           alt={title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e1017] via-transparent to-transparent" />
@@ -817,6 +856,19 @@ const ProjectDetailModal = ({ project, onClose }) => {
               >
                 <Globe size={14} />
                 <span>Launch Live Application</span>
+                <ArrowUpRight size={13} />
+              </a>
+            )}
+
+            {project.videoUrl && (
+              <a
+                href={project.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-magnetic btn-magnetic-secondary px-6 py-3 text-xs uppercase tracking-wider text-emerald-400 border-emerald-500/30 hover:border-emerald-400"
+              >
+                <Video size={14} />
+                <span>Watch 1080p Walkthrough</span>
                 <ArrowUpRight size={13} />
               </a>
             )}
@@ -1130,17 +1182,17 @@ const VideoScreeningRoom = () => {
             </div>
           </div>
 
-          {/* Scientific Digital Twins Screening Container */}
+          {/* 1. ERWEKA ZT 322 Disintegration Tester Screening Container */}
           <div className="group relative overflow-hidden rounded-2xl bg-black border border-white/10 shadow-2xl">
             <a
-              href="https://srephoto.github.io/Twins/docs/pr_campaign.html#screening"
+              href="https://srephoto.github.io/Twins/disintegration_tester_twin/docs/ERWEKA_ZT322_Social_Walkthrough.mp4"
               target="_blank"
               rel="noopener noreferrer"
               className="block relative aspect-video w-full overflow-hidden cursor-pointer"
             >
               <img
                 src={`${baseUrl}projects/digital_twins_zt322.png`}
-                alt="SRE Laboratory Digital Twins 10-Stage Walkthrough Screening Room"
+                alt="ERWEKA ZT 322 Tablet Disintegration 10-Stage Walkthrough"
                 className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -1155,10 +1207,10 @@ const VideoScreeningRoom = () => {
               {/* Top Meta Badges */}
               <div className="absolute top-6 left-6 flex items-center gap-2">
                 <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-black/80 border border-white/15 text-white">
-                  1080p Master Teardown
+                  1080p Narrated Walkthrough
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  Interactive Media Kit
+                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  USP &lang;701&rang; Metrology
                 </span>
               </div>
 
@@ -1166,17 +1218,17 @@ const VideoScreeningRoom = () => {
               <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 block mb-1">
-                    Press Room Screening
+                    Featured Master Teardown
                   </span>
                   <h3 className="font-heading text-2xl font-bold text-white">
-                    SRE Laboratory Digital Twins · Master Teardowns
+                    ERWEKA ZT 322 Tablet Disintegration &amp; Harmonic Drive
                   </h3>
                   <p className="text-zinc-400 text-xs mt-1 hidden sm:block">
-                    ERWEKA ZT 322 Tablet Disintegration & Eppendorf 5424-R Centrifuge internal electromechanical walkthroughs.
+                    55 mm USP stroke harmonics, 1000W PT100 immersion circulator, 10-mesh basket screens &amp; 45° optical relay teardown.
                   </p>
                 </div>
                 <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs text-black bg-emerald-400 px-3.5 py-1.5 rounded-full font-bold">
-                  <span>Enter Screening Room</span>
+                  <span>Watch Walkthrough</span>
                   <ArrowUpRight size={13} />
                 </span>
               </div>
@@ -1185,30 +1237,200 @@ const VideoScreeningRoom = () => {
             <div className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0c0e14] border-t border-white/10">
               <div className="text-center sm:text-left">
                 <span className="font-mono text-xs uppercase tracking-wider text-zinc-500 block">
-                  Media Kit & PR Portal
+                  Interactive Machine Viewer
                 </span>
                 <span className="font-heading font-bold text-white text-base">
-                  18 Precision Instruments · 1:1 Procedural CAD
+                  Disintegration Tester Playground (Retro Theme)
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://srephoto.github.io/Twins/docs/pr_campaign.html"
+                  href="https://srephoto.github.io/Twins/disintegration_tester_twin/software/viewer/index.html?theme=retro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-magnetic btn-magnetic-primary px-6 py-2.5 text-xs uppercase tracking-wider"
                 >
                   <Microscope size={14} />
-                  <span>PR Campaign Hub</span>
+                  <span>Launch Machine Playground</span>
                   <ExternalLink size={12} />
                 </a>
                 <a
-                  href="https://srephoto.github.io/Twins/"
+                  href="https://srephoto.github.io/Twins/disintegration_tester_twin/docs/ERWEKA_ZT322_Social_Walkthrough.mp4"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-magnetic btn-magnetic-secondary px-5 py-2.5 text-xs uppercase tracking-wider hidden sm:inline-flex"
                 >
-                  <span>Launch Fleet</span>
+                  <Video size={13} />
+                  <span>Direct MP4</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Eppendorf Micro 5424-R Centrifuge Screening Container */}
+          <div className="group relative overflow-hidden rounded-2xl bg-black border border-white/10 shadow-2xl">
+            <a
+              href="https://srephoto.github.io/Twins/centrifuge_twin/docs/CENTRIFUGE_Social_Walkthrough.mp4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative aspect-video w-full overflow-hidden cursor-pointer"
+            >
+              <img
+                src={`${baseUrl}projects/digital_twins_exploded.png`}
+                alt="Eppendorf Micro 5424-R Refrigerated Centrifuge 10-Stage Walkthrough"
+                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+              {/* Center Play Indicator */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-cyan-400 text-zinc-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                  <Video size={28} />
+                </div>
+              </div>
+
+              {/* Top Meta Badges */}
+              <div className="absolute top-6 left-6 flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-black/80 border border-white/15 text-white">
+                  1080p Narrated Walkthrough
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                  15,000 RPM · 21,130 &times; g
+                </span>
+              </div>
+
+              {/* Bottom Meta */}
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-cyan-400 block mb-1">
+                    Featured Master Teardown
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-white">
+                    Eppendorf Micro 5424-R Refrigerated Microcentrifuge
+                  </h3>
+                  <p className="text-zinc-400 text-xs mt-1 hidden sm:block">
+                    Stokes pelleting physics, aerosol-tight QuickLock rotor, dynamic ballast stabilization, and -10°C to +40°C thermal thermodynamics.
+                  </p>
+                </div>
+                <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs text-black bg-cyan-400 px-3.5 py-1.5 rounded-full font-bold">
+                  <span>Watch Walkthrough</span>
+                  <ArrowUpRight size={13} />
+                </span>
+              </div>
+            </a>
+
+            <div className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0c0e14] border-t border-white/10">
+              <div className="text-center sm:text-left">
+                <span className="font-mono text-xs uppercase tracking-wider text-zinc-500 block">
+                  Interactive Machine Viewer
+                </span>
+                <span className="font-heading font-bold text-white text-base">
+                  Microcentrifuge Playground (Retro Theme)
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://srephoto.github.io/Twins/centrifuge_twin/software/viewer/index.html?theme=retro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-magnetic btn-magnetic-primary px-6 py-2.5 text-xs uppercase tracking-wider"
+                >
+                  <Microscope size={14} />
+                  <span>Launch Machine Playground</span>
+                  <ExternalLink size={12} />
+                </a>
+                <a
+                  href="https://srephoto.github.io/Twins/centrifuge_twin/docs/CENTRIFUGE_Social_Walkthrough.mp4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-magnetic btn-magnetic-secondary px-5 py-2.5 text-xs uppercase tracking-wider hidden sm:inline-flex"
+                >
+                  <Video size={13} />
+                  <span>Direct MP4</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Grand Biomedical Complex & Master Presentation Portal */}
+          <div className="group relative overflow-hidden rounded-2xl bg-black border border-white/10 shadow-2xl">
+            <a
+              href="https://srephoto.github.io/Twins/presentations.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative aspect-video w-full overflow-hidden cursor-pointer"
+            >
+              <img
+                src={`${baseUrl}projects/digital_twins_lab.png`}
+                alt="Grand Biomedical Complex and Master Presentation Suite"
+                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+              {/* Center Play Indicator */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-white text-zinc-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                  <Layers size={28} />
+                </div>
+              </div>
+
+              {/* Top Meta Badges */}
+              <div className="absolute top-6 left-6 flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-black/80 border border-white/15 text-white">
+                  14-Zone Master Lab
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  Master Presentation Suite
+                </span>
+              </div>
+
+              {/* Bottom Meta */}
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-zinc-400 block mb-1">
+                    Ecosystem Overview
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-white">
+                    Grand Biomedical Complex &amp; Master Presentation Portal
+                  </h3>
+                  <p className="text-zinc-400 text-xs mt-1 hidden sm:block">
+                    Explore synthesis bays, analytical chromatography suites, cleanrooms, and narrated chapter walkthroughs.
+                  </p>
+                </div>
+                <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs text-white bg-black/70 px-3.5 py-1.5 rounded-full border border-white/15">
+                  <span>Open Presentation Portal</span>
+                  <ArrowUpRight size={13} />
+                </span>
+              </div>
+            </a>
+
+            <div className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0c0e14] border-t border-white/10">
+              <div className="text-center sm:text-left">
+                <span className="font-mono text-xs uppercase tracking-wider text-zinc-500 block">
+                  Grand Lab Facility
+                </span>
+                <span className="font-heading font-bold text-white text-base">
+                  14 Zones with Live Interactive Instruments
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://srephoto.github.io/Twins/lab_viewer/index.html?theme=retro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-magnetic btn-magnetic-primary px-6 py-2.5 text-xs uppercase tracking-wider"
+                >
+                  <Microscope size={14} />
+                  <span>Launch Master Lab (Retro)</span>
+                  <ExternalLink size={12} />
+                </a>
+                <a
+                  href="https://srephoto.github.io/Twins/presentations.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-magnetic btn-magnetic-secondary px-5 py-2.5 text-xs uppercase tracking-wider hidden sm:inline-flex"
+                >
+                  <span>Presentations Portal</span>
                   <ArrowUpRight size={12} />
                 </a>
               </div>
@@ -1262,6 +1484,8 @@ const ArtGallery = ({ onSelectArt }) => {
               <img
                 src={artwork.url}
                 alt={artwork.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6">
@@ -1364,8 +1588,11 @@ const App = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedArt, setSelectedArt] = useState(null);
 
-  // Initialize Lenis Smooth Scroll Engine
+  // Initialize Lenis Smooth Scroll Engine (Desktop only to prevent scroll conflicts on mobile Safari)
   useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
