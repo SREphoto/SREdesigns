@@ -156,4 +156,4 @@ Add @GRAYMATTER.md to any AI chat to inject this context automatically. _(contai
 - Run `npm run build` locally. _(build, locally)_
 
 ---
-_Last updated: 2026-10-09T15:19:52.781Z_
+_Last updated: 2026-11-02T16:11:28.633Z_

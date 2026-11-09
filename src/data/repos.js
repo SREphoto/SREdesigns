@@ -1,4 +1,10 @@
 export const projects = [
+    { title: "SRE Laboratory Digital Twins", desc: "Fleet of 18 hyper-realistic 3D scientific instruments with procedural CAD, dual-truth metrology & hardwired circuit continuity", link: "https://srephoto.github.io/Twins/", githubUrl: "https://github.com/SREphoto/Twins" },
+    { title: "Digital Twins PR & Media Kit Portal", desc: "Interactive press room, multichannel launch strategy, high-res teardown inspection & video screenings", link: "https://srephoto.github.io/Twins/docs/pr_campaign.html", githubUrl: "https://github.com/SREphoto/Twins" },
+    { title: "Formula 1 Apex Legends", desc: "2026 FIA F1 Nimble Car 3D WebGL Simulator", link: "https://formula-1-apex.web.app/", githubUrl: "https://github.com/SREphoto/2026-F1-Nimble-Car" },
+    { title: "ERWEKA ZT 322 Disintegration Twin", desc: "USP <701> harmonic stroke disintegration tester with 10-mesh basket screens, 1000W PT100 immersion circulator & dynamic optics", link: "https://srephoto.github.io/Twins/disintegration_tester_twin/software/viewer/index.html", githubUrl: "https://github.com/SREphoto/Twins" },
+    { title: "Eppendorf Micro 5424-R Centrifuge Twin", desc: "15,000 RPM refrigerated microcentrifuge with 21,130 x g Stokes pelleting, aerosol-tight QuickLock rotor & dynamic cooling", link: "https://srephoto.github.io/Twins/centrifuge_twin/software/viewer/index.html", githubUrl: "https://github.com/SREphoto/Twins" },
+    { title: "ChemMate", desc: "Interactive Chemistry & Physics Learning Platform with Fluid Periodic Table", link: "https://chemmate.sredesigns.com", githubUrl: "https://github.com/SREphoto/ChemMate" },
     { title: "TopGunPrompter", desc: "Midjourney Prompt Engine", link: "https://srephoto.github.io/TopGunPrompter/" },
     { title: "SREdesigns", desc: "Premium Portfolio Site", link: "https://srephoto.github.io/SREdesigns/" },
     { title: "zelda-clone", desc: "Legend of Zelda Style Game Engine", link: "https://srephoto.github.io/zelda-clone/" },
